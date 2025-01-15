@@ -41,11 +41,11 @@ jobs:
 
 
 
-    - name: Compress the build directory into a tar.gz file
-      run: tar -czf build.tar.gz bin/
+    - name: Compress the build directory into a zip file
+      run: Compress-Archive -Path bin\* -DestinationPath build.zip
 
-    - name: Upload the tar.gz artifact
+    - name: Upload the zip artifact
       uses: actions/upload-artifact@v3
       with:
         name: build-artifact
-        path: build.tar.gz
+        path: build.zip
