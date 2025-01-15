@@ -26,7 +26,7 @@ jobs:
     - name: Configure CMake
       # Configure CMake in a 'build' subdirectory. `CMAKE_BUILD_TYPE` is only required if you are using a single-configuration generator such as make.
       # See https://cmake.org/cmake/help/latest/variable/CMAKE_BUILD_TYPE.html?highlight=cmake_build_type
-      run: cmake -B ${{github.workspace}}\build -G "NMake Makefiles" -DWIN32=ON;
+      run: cmake -B ${{github.workspace}}\build -G "NMake Makefiles" -DWIN32=ON -DBUILD_SHARED_LIBS=ON;
 
     - name: Build
       working-directory: ${{github.workspace}}\build
@@ -42,7 +42,7 @@ jobs:
 
 
     - name: Compress the build directory into a zip file
-      run: Compress-Archive -Path .\* -DestinationPath build.zip
+      run: Compress-Archive -Path build\bin\* -DestinationPath build.zip
 
     - name: Upload the zip artifact
       uses: actions/upload-artifact@v4
