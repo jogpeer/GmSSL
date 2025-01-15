@@ -42,8 +42,7 @@ jobs:
 
 
     - name: Compress the build directory into a tar.gz file
-      run: |
-        tar -czf build.tar.gz bin/
+      run: tar -czf build.tar.gz bin/
 
     - name: Upload the tar.gz artifact
       uses: actions/upload-artifact@v3
